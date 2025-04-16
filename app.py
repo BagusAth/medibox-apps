@@ -81,7 +81,7 @@ def get_sensor_data():
 
 from datetime import timedelta
 
-def get_sensor_history(limit=50):
+def get_sensor_history(limit=100):
     try:
         # Ambil riwayat data sensor terbaru dari MongoDB
         records = list(collection.find().sort("timestamp", -1).limit(limit))
@@ -116,7 +116,7 @@ def get_sensor_history(limit=50):
             else:
                 changes['timestamp'] = None
 
-            changes['jumlah_obat'] = obat_count
+            changes['jumlah obat diminum'] = obat_count
             filtered_changes.append(changes)
 
         return pd.DataFrame(filtered_changes)
