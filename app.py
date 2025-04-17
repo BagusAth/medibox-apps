@@ -179,7 +179,7 @@ def main_page():
     with col1:
         if st.button("Ya", type="primary"):
             st.session_state.page = 'medical_history'
-            st.experimental_rerun()
+            st.rerun()
     with col2:
         if st.button("Tidak"):
             st.success("🎉 Bagus! Tetap jaga kesehatan...")
@@ -216,7 +216,7 @@ def medical_history_page():
                     st.session_state.page = 'questioning'
                     st.session_state.current_question = 0
                     st.session_state.answers = []
-                    st.experimental_rerun()
+                    st.rerun()
                 else:
                     st.error("Gagal membuat pertanyaan. Silakan coba lagi.")
             else:
@@ -237,15 +237,15 @@ def questioning_page():
             if st.button("Ya ✅", key=f"yes_{st.session_state.current_question}"):
                 st.session_state.answers.append(True)
                 st.session_state.current_question += 1
-                st.experimental_rerun()
+                st.rerun()
         with col2:
             if st.button("Tidak ❌", key=f"no_{st.session_state.current_question}"):
                 st.session_state.answers.append(False)
                 st.session_state.current_question += 1
-                st.experimental_rerun()
+                st.rerun()
     else:
         st.session_state.page = 'results'
-        st.experimental_rerun()
+        st.rerun()
 
 def results_page():
     st.title("📝 Hasil Analisis")
@@ -272,7 +272,7 @@ def results_page():
     st.divider()
     if st.button("🔄 Mulai Pemeriksaan Baru"):
         st.session_state.page = 'main'
-        st.experimental_rerun()
+        st.rerun()
 
 # Jika ada halaman sensor terpisah (jika diperlukan)
 def sensor_page():
